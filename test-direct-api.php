@@ -6,7 +6,6 @@ header("Content-Type: application/json; charset=UTF-8");
 
 echo "Testing Direct Controller Access...\n\n";
 
-// Load files
 require_once 'app/config/Config.php';
 require_once 'app/config/Database.php';
 require_once 'app/core/Model.php';
@@ -17,15 +16,12 @@ require_once 'app/controllers/KaryawanController.php';
 try {
     echo "Files loaded successfully!\n\n";
     
-    // Test instantiate controller
     $controller = new KaryawanController();
     echo "Controller instantiated!\n\n";
     
-    // Test method exists
     if (method_exists($controller, 'index')) {
         echo "Method 'index' exists!\n\n";
         
-        // Call the method
         echo "Calling index()...\n\n";
         $controller->index();
         

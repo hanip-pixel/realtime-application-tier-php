@@ -12,10 +12,8 @@ class App {
 
         $url = $this->parseUrl();
         
-        // Tentukan controller name
         $controllerName = isset($url[0]) ? ucfirst(strtolower($url[0])) . 'Controller' : 'MahasiswaController';
         
-        // Cek apakah class sudah ada (sudah di-load di index.php)
         if (class_exists($controllerName)) {
             $this->controller = new $controllerName();
             unset($url[0]);

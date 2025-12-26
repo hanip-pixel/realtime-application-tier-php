@@ -12,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-// SIMPLE ROUTING - HARDCODED
 try {
     require_once '../app/config/Config.php';
     require_once '../app/config/Database.php';
@@ -24,14 +23,12 @@ try {
     
     $controller = new KaryawanController();
     
-    // Get path from URL
     $requestUri = $_SERVER['REQUEST_URI'];
     $basePath = '/application-tier-php/public/';
     $path = str_replace($basePath, '', $requestUri);
     $path = trim($path, '/');
     $pathParts = explode('/', $path);
     
-    // Determine method
     $method = $_SERVER['REQUEST_METHOD'];
     $id = isset($pathParts[1]) && is_numeric($pathParts[1]) ? $pathParts[1] : null;
     

@@ -4,7 +4,6 @@ ini_set('display_errors', 1);
 
 echo "<h2>Test Koneksi Database</h2>";
 
-// Test 1: Cek file exists
 echo "<h3>1. Cek File Exists</h3>";
 $files = [
     'app/config/Config.php',
@@ -19,7 +18,6 @@ foreach ($files as $file) {
     }
 }
 
-// Test 2: Load files
 echo "<h3>2. Load Files</h3>";
 try {
     require_once 'app/config/Config.php';
@@ -32,7 +30,6 @@ try {
     die();
 }
 
-// Test 3: Test database connection
 echo "<h3>3. Test Database Connection</h3>";
 try {
     $db = new Database();
@@ -42,7 +39,6 @@ try {
         echo "✅ Database connected successfully!<br>";
         echo "Database: " . Config::$DB_NAME . "<br>";
         
-        // Test query
         $stmt = $conn->query("SELECT COUNT(*) as total FROM employees");
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         echo "✅ Total karyawan: " . $result['total'] . "<br>";
